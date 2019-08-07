@@ -4,19 +4,30 @@
   "description": "Example Node Server w/ Babel",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel lib -d dist",
-    "start": "npm run build && nodemon dist/index.js",
-    "serve": "npm run build && node dist/index.js",
-    "test": "npm run build && mocha --require @babel/register"
+    "build": "rimraf dist/ && babel lib -d dist",
+    "dev": "npm run build && nodemon dist/server.js",
+    "start": "npm run build && node dist/server.js",
+    "test": "mocha --require @babel/register --exit",
+    "test-with-coverage": "nyc --check-coverage --lines 80 --reporter=text mocha --require @babel/register --exit",
+    "test-with-coverage-extensive": "nyc --check-coverage --lines 80 --per-file --reporter=text mocha --require @babel/register --exit"
   },
-  "author": "James Kyle <me@thejameskyle.com>",
+  "author": "",
   "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.6",
+    "rimraf": "^2.6.3"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/register": "^7.4.0",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
   }
 }
