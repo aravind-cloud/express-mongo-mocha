@@ -1,7 +1,7 @@
 {
   "name": "express-restapi",
   "version": "1.0.0",
-  "description": "Example Node Server w/ Babel",
+  "description": "REST API in Express JS w/ MongoDB and ES6 w/ Babel Unit test w/ Mocha and Coverage w/ Istanbul",
   "main": "lib/index.js",
   "scripts": {
     "build": "rimraf dist/ && babel lib -d dist",
