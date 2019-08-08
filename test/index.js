@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import request from "supertest";
-import server from "../lib/server";
+import server from "../src/server";
 
 describe("# Get all Products", function() {
   it("should get all products", function(done) {
