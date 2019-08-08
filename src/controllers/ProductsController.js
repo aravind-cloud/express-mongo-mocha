@@ -1,4 +1,4 @@
-import * as ProductsService from "../services/ProductsService";
+import * as ProductsService from '../services/ProductsService';
 
 const getProductById = (req, res) => {
   ProductsService.getProductById(req, res);

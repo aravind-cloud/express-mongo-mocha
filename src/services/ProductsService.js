@@ -1,51 +1,52 @@
-import mongoose from "mongoose";
-import productModel from "../models/Product";
+/* eslint-disable no-unused-vars */
+import mongoose from 'mongoose';
+import ProductModel from '../models/Product';
 
 // Get product by productId
 const getProductById = (req, res) => {
   const id = req.params.productId;
-  productModel
+  ProductModel
     .findById(id)
     .exec()
-    .then(result => {
+    .then((result) => {
       if (result) {
         res.status(200).json({
-          message: "Success - Get Product by Id",
-          response: result
+          message: 'Success - Get Product by Id',
+          response: result,
         });
       } else {
         res.status(404).json({
-          message: "No records found"
+          message: 'No records found',
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        message: err
+        message: err,
       });
     });
 };
 
 // Get all products
-const getAllProducts = (req, res) => {
-  productModel
+const getAllProducts = (_req, res) => {
+  ProductModel
     .find()
     .exec()
-    .then(result => {
+    .then((result) => {
       if (result) {
         res.status(200).json({
-          message: "Success",
-          response: result
+          message: 'Success',
+          response: result,
         });
       } else {
         res.status(404).json({
-          message: "No records found"
+          message: 'No records found',
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        message: err
+        message: err,
       });
     });
 };
@@ -55,8 +56,8 @@ const createProduct = (req, res) => {
   try {
     const pType = req.body.metadata.productType
       ? req.body.metadata.productType
-      : "Electronics";
-    const productEntity = new productModel({
+      : 'Electronics';
+    const productEntity = new ProductModel({
       _id: mongoose.Types.ObjectId(),
       name: req.body.name,
       quantity: req.body.quantity,
@@ -64,28 +65,28 @@ const createProduct = (req, res) => {
       metadata: {
         description: req.body.metadata.description,
         imported: req.body.metadata.imported,
-        productType: pType
-      }
+        productType: pType,
+      },
     });
     productEntity
       .save()
-      .then(result => {
-        //console.log('Response ' + result);
+      .then((_result) => {
+        // console.log('Response ' + result);
         res.status(201).json({
-          message: "Successfully created the product",
-          createdProduct: productEntity
+          message: 'Successfully created the product',
+          createdProduct: productEntity,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({
-          message: "Error occured",
-          errorDetails: err
+          message: 'Error occured',
+          errorDetails: err,
         });
       });
   } catch (err) {
     res.status(500).json({
-      message: "Error occured",
-      errorDetails: err
+      message: 'Error occured',
+      errorDetails: err,
     });
   }
 };

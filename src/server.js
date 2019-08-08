@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import { connect } from 'mongoose';
 import { urlencoded, json } from 'body-parser';
