@@ -1,5 +1,5 @@
 {
-  "name": "example-node-server",
+  "name": "express-restapi",
   "version": "1.0.0",
   "description": "Example Node Server w/ Babel",
   "main": "lib/index.js",
